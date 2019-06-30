@@ -14,8 +14,8 @@ const distBetween = (p1: [number, number], p2: [number, number]): number =>
 const c: HTMLCanvasElement = document.getElementById("myCanvas");
 const global_ctx = c.getContext("2d");
 const drawSquare = (ctx: CanvasRenderingContext2D, origin: [number, number], size: number, van: [number, number], distanceFactor: number) => {
-  const x = origin[0]
-  const y = origin[1]
+  const x = origin[1]
+  const y = origin[0]
   const px = van[0]
   const py = van[1]
   const getmid = (a,b) => (a + (b-a)*distanceFactor)
@@ -123,7 +123,7 @@ const animateFrame = (ctx: CanvasRenderingContext2D, van: [number, number], dist
     const factor_raw = (Math.ceil((fake_x + 1) / init_size) - 1) + 4
     const factor = Math.abs(factor_raw % 8 - 4)
     const size_mod = Math.pow(2, factor)
-    const size = (init_size / (size_mod))
+    const size = (init_size / (size_mod)) * (Math.cos(toRadians(it / 2))+1.5) / 2
     const cube_fit = Math.ceil((SIZE ) / size)
     const iter = range(0, cube_fit)
     const cubes = iter.map(y => {
@@ -157,7 +157,7 @@ let it = 0
 const render = () => requestAnimationFrame(() => {
   const x = ACTUAL_SIZE / 2 + (SIZE * 0.5 * Math.cos(toRadians(it)))
   const y = ACTUAL_SIZE / 2 + (SIZE * 0.5 * Math.sin(toRadians(it)))
-  const distanceFactor = Math.cos(toRadians(it/2)) / 2
+  const distanceFactor = Math.cos(toRadians(it/2)) * 5
   animateFrame(global_ctx, [x, y], distanceFactor, it)
   if (it < 1440) {
     render()
