@@ -1,0 +1,19 @@
+{
+  "name": "cuboids",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "repository": "git@github.com:charltongroves/dolphin_time.git",
+  "author": "Charlton Groves <charltongroves@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.102.0",
+    "watch": "^1.0.2"
+  },
+  "scripts": {
+    "build": "babel src/ -d lib/",
+    "prepublish": "yarn run build",
+    "watch": "watch 'yarn run build' ./src"
+  }
+}

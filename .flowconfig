@@ -1,0 +1,13 @@
+[ignore]
+./index.js
+
+[include]
+./src/*
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]
